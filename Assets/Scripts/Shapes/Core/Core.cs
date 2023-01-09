@@ -13,7 +13,7 @@ namespace TetrisBlast.Shapes.Cores
         public GridCore currentGridCore;
         RaycastHit2D hit;
         private LayerMask mask => ShapeManager.GloballAccess.coreLayerMask;
-
+        public CordinantInfo gridCoreInfo;
         private void Start()
         {
             if (parent != null)
@@ -72,6 +72,7 @@ namespace TetrisBlast.Shapes.Cores
                 if (!currentGridCore.isFull)
                 {
                     currentGridCore.AddCore(this);
+                    parent._cordinant_ınfos.Add(gridCoreInfo);
                 }
             }
         }
@@ -83,6 +84,11 @@ namespace TetrisBlast.Shapes.Cores
                 if (currentGridCore.shapeCore == this)
                 {
                     currentGridCore.AddCore(null);
+
+                    if (parent._cordinant_ınfos.Contains(gridCoreInfo))
+                    {
+                        parent._cordinant_ınfos.Remove(gridCoreInfo);
+                    }
                 }
             }
         }

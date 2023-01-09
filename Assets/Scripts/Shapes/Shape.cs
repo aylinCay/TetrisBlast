@@ -20,6 +20,8 @@ namespace TetrisBlast.Shapes
         private Vector3 selectedPosition;
         public bool isLocated;
 
+        public List<CordinantInfo> _cordinant_ınfos = new List<CordinantInfo>();
+
         public void Start()
         {
         }
@@ -62,6 +64,10 @@ namespace TetrisBlast.Shapes
                         transform.position = mainGrid.transform.position;
                         isLocated = true;
                         Complete();
+
+                        Debug.Log(_cordinant_ınfos.Count);
+                        GridManager.GlobalAccess.FindsCompletedGridCores(_cordinant_ınfos.ToArray());
+
                         return;
                     }
 
